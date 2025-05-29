@@ -37,7 +37,7 @@ NexMeet is a modern, feature-rich video conferencing platform built with React a
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/NexMeet.git
+git clone https://github.com/MdArmaan143/NexMeet.git
 cd NexMeet
 ```
 
@@ -52,10 +52,6 @@ cd ../frontend
 npm install
 ```
 
-3. Create a `.env` file in the backend directory:
-```env
-PORT=5000
-```
 
 ## Running the Application
 
@@ -128,12 +124,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-For support, email support@nexmeet.com or open an issue in the repository.
+For support, email armaanshaikhh786@gmail.com or open an issue in the repository.
 
 ---
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by [MD ARMAAN]
 
 ## 🌐 Live Demo
 
-👉 [Click here to visit NexMeet](https://nexmeet-1.onrender.com)
+👉 [NexMeet.com](https://nexmeet-1.onrender.com)
