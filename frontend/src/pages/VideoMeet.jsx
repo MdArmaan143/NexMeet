@@ -15,6 +15,7 @@ import SendIcon from '@mui/icons-material/Send';
 import PersonIcon from '@mui/icons-material/Person';
 import ChatBox from '../components/ChatBox';
 import servers from '../environment';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -30,7 +31,7 @@ const peerConfigConnections = {
 }
 
 export default function VideoMeetComponent() {
-
+    const navigate = useNavigate();
     var socketRef = useRef();
     let socketIdRef = useRef();
 
@@ -424,8 +425,9 @@ export default function VideoMeetComponent() {
         // Clear all video streams
         setVideos([]);
         
-        // Disconnect socket
+        // Disconnect socket and remove all listeners
         if (socketRef.current) {
+            socketRef.current.removeAllListeners();
             socketRef.current.disconnect();
         }
 
@@ -437,9 +439,16 @@ export default function VideoMeetComponent() {
         setMessage("");
         setNewMessages(0);
         setModal(false);
+        setAskForUsername(true);
+        setUsername("");
 
-        // Redirect to home
-        window.location.href = "/";
+        // Clear the connections object
+        Object.keys(connections).forEach(key => {
+            delete connections[key];
+        });
+
+        // Use React Router navigation for smooth transition
+        navigate('/home', { replace: true });
     }
 
     let openChat = () => {
@@ -466,11 +475,11 @@ export default function VideoMeetComponent() {
 
 
     let sendMessage = () => {
-        console.log(socketRef.current);
-        socketRef.current.emit('chat-message', message, username)
-        setMessage("");
-
-        // this.setState({ message: "", sender: username })
+        if (message.trim()) {  // Only send if message is not empty after trimming whitespace
+            console.log(socketRef.current);
+            socketRef.current.emit('chat-message', message, username)
+            setMessage("");
+        }
     }
 
     

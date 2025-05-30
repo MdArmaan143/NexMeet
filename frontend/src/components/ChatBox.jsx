@@ -19,7 +19,9 @@ const ChatBox = ({ messages, message, onMessageChange, onSendMessage, onClose, u
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      onSendMessage();
+      if (message.trim()) {
+        onSendMessage();
+      }
     }
   };
 
@@ -77,6 +79,7 @@ const ChatBox = ({ messages, message, onMessageChange, onSendMessage, onClose, u
           onClick={onSendMessage}
           className={styles.sendButton}
           endIcon={<SendIcon />}
+          disabled={!message.trim()}
         >
           Send
         </Button>

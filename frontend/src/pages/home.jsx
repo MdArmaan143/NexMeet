@@ -6,6 +6,7 @@ import { Button, IconButton, TextField } from '@mui/material';
 import RestoreIcon from '@mui/icons-material/Restore';
 import { AuthContext } from '../contexts/AuthContext';
 import styles from '../styles/home.module.css';
+import animations from '../styles/animations.module.css';
 
 function HomeComponent() {
     const navigate = useNavigate();
@@ -18,9 +19,9 @@ function HomeComponent() {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${animations.pageEnter}`}>
             {/* Navigation Bar */}
-            <nav className={styles.navbar}>
+            <nav className={`${styles.navbar} ${animations.fadeInUp}`}>
                 <div className={styles.logoSection}>
                     <h1 className={styles.logo}>NexMeet</h1>
                 </div>
@@ -48,8 +49,15 @@ function HomeComponent() {
                     </button>
                     <button 
                         onClick={() => {
+                            // Clear all auth-related data
                             localStorage.removeItem("token");
-                            navigate("/auth");
+                            localStorage.removeItem("user");
+                            
+                            // Clear any other session data if needed
+                            sessionStorage.clear();
+                            
+                            // Redirect to landing page
+                            navigate("/");
                         }} 
                         className={styles.logoutButton}
                     >
@@ -62,7 +70,7 @@ function HomeComponent() {
             <main className={styles.mainContent}>
                 <div className={styles.contentWrapper}>
                     {/* Left Section */}
-                    <div className={styles.leftSection}>
+                    <div className={`${styles.leftSection} ${animations.slideInLeft}`}>
                         <div className={styles.heroContent}>
                             <h2 className={styles.heroTitle}>
                                 Providing Quality Video Call Just Like Quality Education
@@ -93,7 +101,7 @@ function HomeComponent() {
                     </div>
 
                     {/* Right Section */}
-                    <div className={styles.rightSection}>
+                    <div className={`${styles.rightSection} ${animations.slideInRight}`}>
                         <div className={styles.illustrationWrapper}>
                             <svg 
                                 className={styles.illustration} 

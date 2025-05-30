@@ -63,6 +63,7 @@
   color: var(--text-primary);
   font-size: 0.875rem;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .historyButton:hover {
@@ -83,6 +84,7 @@
   border-radius: 0.5rem;
   font-size: 0.875rem;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .logoutButton:hover {
