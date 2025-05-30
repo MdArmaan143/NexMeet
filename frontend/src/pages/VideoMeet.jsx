@@ -55,11 +55,13 @@ export default function VideoMeetComponent() {
 
     let [message, setMessage] = useState("");
 
-    let [newMessages, setNewMessages] = useState();
+    let [newMessages, setNewMessages] = useState(0);
 
     let [askForUsername, setAskForUsername] = useState(true);
 
     let [username, setUsername] = useState("");
+    const [usernameError, setUsernameError] = useState("");
+    const usernameInputRef = useRef(null);
 
     const videoRef = useRef([])
 
@@ -484,10 +486,24 @@ export default function VideoMeetComponent() {
 
     
     let connect = () => {
+        if (!username.trim()) {
+            setUsernameError("Please enter a username to join the meeting.");
+            if (usernameInputRef.current) {
+                usernameInputRef.current.focus();
+            }
+            return;
+        }
+        setUsernameError("");
         setAskForUsername(false);
         getMedia();
     }
 
+    // Add useEffect for auto-focus
+    useEffect(() => {
+        if (askForUsername && usernameInputRef.current) {
+            usernameInputRef.current.focus();
+        }
+    }, [askForUsername]);
 
     return (
         <div>
@@ -501,7 +517,15 @@ export default function VideoMeetComponent() {
                                 label="Username"
                                 variant="outlined"
                                 value={username}
-                                onChange={e => setUsername(e.target.value)}
+                                onChange={e => {
+                                    setUsername(e.target.value);
+                                    if (e.target.value.trim()) {
+                                        setUsernameError("");
+                                    }
+                                }}
+                                error={!!usernameError}
+                                helperText={usernameError}
+                                inputRef={usernameInputRef}
                                 InputProps={{
                                     startAdornment: <PersonIcon sx={{ mr: 1, color: 'text.secondary' }} />,
                                 }}
@@ -511,10 +535,14 @@ export default function VideoMeetComponent() {
                                 onClick={connect}
                                 fullWidth
                                 size="large"
+                                disabled={!username.trim()}
                                 sx={{
                                     background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
                                     '&:hover': {
                                         background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+                                    },
+                                    '&.Mui-disabled': {
+                                        background: '#e0e0e0',
                                     },
                                 }}
                             >
