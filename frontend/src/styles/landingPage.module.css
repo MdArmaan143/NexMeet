@@ -58,6 +58,7 @@
   min-height: calc(100vh - 80px);
   position: relative;
   z-index: 5;
+  transition: all 0.3s ease;
 }
 
 .textContent {
@@ -189,34 +190,62 @@
   .landingMainContainer {
     flex-direction: column;
     text-align: center;
-    gap: 3rem;
+    gap: 2rem;
+    padding: 1.5rem 1rem;
+    min-height: auto;
   }
 
   .textContent {
     max-width: 100%;
+    padding: 0 1rem;
   }
 
   .textContent h1 {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .textContent p {
+    margin-bottom: 1.5rem;
+  }
+
+  .illustrationContainer {
+    width: 100%;
+    padding: 1rem 0;
   }
 
   .illustration {
     max-width: 80%;
+    height: auto;
   }
 }
 
 @media (max-width: 480px) {
+  .landingMainContainer {
+    padding: 1rem 0.5rem;
+    gap: 1.5rem;
+  }
+
+  .textContent {
+    padding: 0 0.5rem;
+  }
+
   .textContent h1 {
     font-size: 2rem;
   }
 
   .textContent p {
     font-size: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   .ctaButton {
     padding: 0.8rem 2rem;
     font-size: 1rem;
+  }
+
+  .illustrationContainer {
+    padding: 0.5rem 0;
   }
 
   .illustration {

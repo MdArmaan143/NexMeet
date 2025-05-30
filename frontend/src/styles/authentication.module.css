@@ -1,11 +1,13 @@
 .authContainer {
   min-height: 100vh;
+  height: 100%;
   background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
+  overflow-x: hidden;
 }
 
 .authContainer::before {
@@ -228,20 +230,24 @@
 @media (max-width: 1024px) {
   .authContent {
     gap: 2rem;
+    max-width: 90%;
   }
 }
 
 @media (max-width: 768px) {
   .authContent {
     grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: 1rem;
   }
 
   .illustrationSection {
-    padding: 2rem 1rem;
+    padding: 1rem;
+    max-height: 300px;
   }
 
   .formSection {
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .title {
@@ -255,7 +261,7 @@
 
 @media (max-width: 480px) {
   .authContainer {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   .authContent {
@@ -263,7 +269,20 @@
   }
 
   .formTabs {
-    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tabButton {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .inputGroup input {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .submitButton {
+    padding: 0.5rem;
   }
 }
 

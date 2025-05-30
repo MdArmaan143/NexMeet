@@ -1,0 +1,84 @@
+/* Page Transitions */
+.pageEnter {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.pageExit {
+  animation: fadeOut 0.3s ease-in;
+}
+
+/* Content Animations */
+.slideInLeft {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+.slideInRight {
+  animation: slideInRight 0.5s ease-out;
+}
+
+.fadeInUp {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Animation Adjustments */
+@media (prefers-reduced-motion: reduce) {
+  .pageEnter,
+  .pageExit,
+  .slideInLeft,
+  .slideInRight,
+  .fadeInUp {
+    animation: none;
+  }
+} 

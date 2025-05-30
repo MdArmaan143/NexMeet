@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import styles from '../styles/authentication.module.css';
+import animations from '../styles/animations.module.css';
 
 export default function Authentication() {
   const [username, setUsername] = useState('');
@@ -45,10 +46,10 @@ export default function Authentication() {
   };
 
   return (
-    <div className={styles.authContainer}>
+    <div className={`${styles.authContainer} ${animations.pageEnter}`}>
       <div className={styles.authContent}>
         {/* Left Section - Illustration */}
-        <div className={styles.illustrationSection}>
+        <div className={`${styles.illustrationSection} ${animations.slideInLeft}`}>
           <div className={styles.illustrationWrapper}>
             <svg
               className={styles.illustration}
@@ -113,7 +114,7 @@ export default function Authentication() {
         </div>
 
         {/* Right Section - Form */}
-        <div className={styles.formSection}>
+        <div className={`${styles.formSection} ${animations.slideInRight}`}>
           <div className={styles.formContainer}>
             <h2 className={styles.title}>
               {formState === 0 ? 'Welcome Back' : 'Create Account'}
@@ -195,7 +196,7 @@ export default function Authentication() {
       </div>
 
       {open && (
-        <div className={styles.notification}>
+        <div className={`${styles.notification} ${animations.fadeInUp}`}>
           <p>{message}</p>
           <button 
             type="button"
